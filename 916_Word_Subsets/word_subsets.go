@@ -1,30 +1,45 @@
 package word_subsets
 
-func isByteMatch(A []byte, B byte) bool {
-	for j := 0; j < len(A); j++ {
-		if A[j] == B {
-			A[j] = 0
-			return true
-		}
+import (
+//"fmt"
+)
+
+func count(str string) []int {
+	data := []byte(str)
+	var countArr [26]int
+
+	for i := 0; i < 26; i++ {
+		countArr[i] = 0
 	}
-	return false
+
+	for i := 0; i < len(data); i++ {
+		countArr[data[i]-byte('a')] = countArr[data[i]-byte('a')] + 1
+	}
+
+	return countArr[:]
 }
 
-func isWordSubset(A string, B string) bool {
-	dataA := []byte(A)
-	dataB := []byte(B)
+func countB(B []string) []int {
+	var countArr [26]int
 
-	for i := 0; i < len(dataB); i++ {
-		if !isByteMatch(dataA, dataB[i]) {
-			return false
-		}
+	for i := 0; i < 26; i++ {
+		countArr[i] = 0
 	}
-	return true
-}
 
-func isSubset(A string, B []string) bool {
 	for i := 0; i < len(B); i++ {
-		if !isWordSubset(A, B[i]) {
+		countB := count(B[i])
+		for i := 0; i < 26; i++ {
+			if countB[i] > countArr[i] {
+				countArr[i] = countB[i]
+			}
+		}
+	}
+	return countArr[:]
+}
+
+func isWordSubset(MA []int, MB []int) bool {
+	for i := 0; i < 26; i++ {
+		if MA[i] < MB[i] {
 			return false
 		}
 	}
@@ -32,9 +47,11 @@ func isSubset(A string, B []string) bool {
 }
 
 func wordSubsets(A []string, B []string) []string {
+	MB := countB(B)
 	var res []string
 	for i := 0; i < len(A); i++ {
-		if isSubset(A[i], B) {
+		MA := count(A[i])
+		if isWordSubset(MA, MB) {
 			res = append(res, A[i])
 		}
 	}
