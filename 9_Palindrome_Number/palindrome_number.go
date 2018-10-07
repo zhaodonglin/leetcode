@@ -5,8 +5,12 @@ func isPalindrome(x int) bool {
 		return false
 	}
 
+	if x < 10 {
+		return true
+	}
+
 	div := 10
-	for x/div > 10 {
+	for x/div >= 10 {
 		div *= 10
 	}
 
