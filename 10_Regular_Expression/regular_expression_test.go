@@ -5,68 +5,86 @@ import (
 )
 
 func Test_Regular_Expression(t *testing.T) {
+	// if !isMatch("", "c*c*") {
+	// 	t.Error("failed to match")
+	// }
 
-	if isMatch("mississippi", "mis*is*p*.") {
-		t.Error("failed to match, mississippi mis*is*p*.")
+	if !isMatch("a", ".*..a*") {
+		t.Error("faield to match")
 	}
 
-	if isMatch("aaab", "ab") {
-		t.Error("failed to match, aaab, ab")
-	}
+	// if isMatch("mississippi", "mis*is*p*.") {
+	// 	t.Error("failed to match, mississippi mis*is*p*.")
+	// }
 
-	if isMatch("ab", ".*c") {
-		t.Error("failed to match, ab,.*c")
-	}
-	if !isMatch("abc", "a*") {
-		t.Error("failed to match, abc, a*")
-	}
+	// if isMatch("aaab", "ab") {
+	// 	t.Error("failed to match, aaab, ab")
+	// }
 
-	if !isMatch("dc", ".*") {
-		t.Error("failed to match, dc, .*")
-	}
+	// if isMatch("ab", ".*c") {
+	// 	t.Error("failed to match, ab,.*c")
+	// }
+	// if isMatch("abc", "a*") {
+	// 	t.Error("failed to match, abc, a*")
+	// }
 
-	if isMatch("dc", "c") {
-		t.Error("failed to match, dc,c")
-	}
+	// if !isMatch("dc", ".*") {
+	// 	t.Error("failed to match, dc, .*")
+	// }
 
-	if isMatch("cd", "e") {
-		t.Error("failed to match ,cd, e")
-	}
+	// if isMatch("dc", "c") {
+	// 	t.Error("failed to match, dc,c")
+	// }
 
-	if !isMatch("d", "d") {
-		t.Error("failed to match d, d")
-	}
+	// if isMatch("cd", "e") {
+	// 	t.Error("failed to match ,cd, e")
+	// }
 
-	if !isMatch("d", ".") {
-		t.Error("failed to match d, .")
-	}
+	// if !isMatch("d", "d") {
+	// 	t.Error("failed to match d, d")
+	// }
 
-	if isMatch("aa", "a") {
-		t.Error("failed to match aa, a")
-	}
+	// if !isMatch("d", ".") {
+	// 	t.Error("failed to match d, .")
+	// }
 
-	if !isMatch("aa", "aa") {
-		t.Error("failde to match aa aa")
-	}
+	// if isMatch("aa", "a") {
+	// 	t.Error("failed to match aa, a")
+	// }
 
-	if isMatch("aaa", "aa") {
-		t.Error("failde to match aaa aa")
-	}
+	// if !isMatch("aa", "aa") {
+	// 	t.Error("failde to match aa aa")
+	// }
 
-	if !isMatch("aa", "a*") {
-		t.Error("failde to match aa a*")
-	}
+	// if isMatch("aaa", "aa") {
+	// 	t.Error("failde to match aaa aa")
+	// }
 
-	if !isMatch("aa", ".*") {
-		t.Error("failde to match aa .*")
-	}
+	// if !isMatch("aa", "a*") {
+	// 	t.Error("failde to match aa a*")
+	// }
 
-	if !isMatch("ab", ".*") {
-		t.Error("failde to match ab .*")
-	}
+	// if !isMatch("aa", ".*") {
+	// 	t.Error("failde to match aa .*")
+	// }
 
-	if !isMatch("aab", "c*a*b*") {
-		t.Error("failde to match aa aa")
-	}
+	// if !isMatch("ab", ".*") {
+	// 	t.Error("failde to match ab .*")
+	// }
 
+	// if !isMatch("aab", "c*a*b*") {
+	// 	t.Error("failde to match aa aa")
+	// }
+
+	// if isMatch("abcd", "d*") {
+	// 	t.Error("failed to match abcd d*")
+	// }
+
+	// if !isMatch("a", "ab*") {
+	// 	t.Error("failed to match a ab*")
+	// }
+
+	// if isMatch("aaa", "aaaa") {
+	// 	t.Error("failed to match aaa aaaa")
+	// }
 }

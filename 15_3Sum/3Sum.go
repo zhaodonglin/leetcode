@@ -8,9 +8,7 @@ var res_arr [][]int
 
 func combine(x []int, res []int, n int, m int) {
 	if m == 0 {
-
 		res_arr = append(res_arr, res)
-		// fmt.Println(res_arr, len(res_arr))
 		return
 	}
 	if n == 0 {

@@ -19,9 +19,9 @@ const (
 )
 
 const (
-	CAT_WIN   = 0
+	CAT_WIN   = 2
 	MOUSE_WIN = 1
-	DRAW      = 2
+	DRAW      = 0
 )
 
 type stepKey struct {
