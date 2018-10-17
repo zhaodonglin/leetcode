@@ -26,6 +26,9 @@ func letters(digits string, res *string, results *[]string) {
 func lettersCombinations(digits string) []string {
 	var res string
 	var results []string
+	if len(digits) == 0 {
+		return []string{}
+	}
 	letters(digits, &res, &results)
 	return results
 }

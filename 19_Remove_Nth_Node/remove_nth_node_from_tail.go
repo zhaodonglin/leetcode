@@ -9,11 +9,12 @@ type ListNode struct {
 
 func traverse(head *ListNode) {
 	p1 := head
-	//fmt.Println(p1.Next)
+	fmt.Println("begin:")
 	for p1 != nil {
 		fmt.Println(p1.Val)
 		p1 = p1.Next
 	}
+	fmt.Println("end")
 }
 
 func append(head *ListNode, node *ListNode) {
@@ -25,9 +26,17 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	p1 := head
 	p2 := head
 
-	for n > 0 {
+	var dummyHead ListNode
+	dummyHead.Next = p1
+
+	for n > 0 && p2 != nil {
 		p2 = p2.Next
 		n = n - 1
+	}
+
+	if n == 0 && p2 == nil {
+		dummyHead.Next = p1.Next
+		return dummyHead.Next
 	}
 
 	for p2.Next != nil {
@@ -35,7 +44,9 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		p2 = p2.Next
 	}
 
-	p1.Next = p1.Next.Next
+	if p1.Next != nil {
+		p1.Next = p1.Next.Next
+	}
 
-	return head
+	return dummyHead.Next
 }

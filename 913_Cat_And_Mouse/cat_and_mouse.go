@@ -8,6 +8,12 @@ package cat_and_mouse
 // || mouse to hole's distance == cat to hole's distance and pass different nodes
 //draw:mouse's next position to cat's distance is >=2 and has two paths
 //cat win
+//[[6],[4],[9],[5],[1,5],[3,4,6],[0,5,10],[8,9,10],[7],[2,7],[6,7]]
+//map[]
+//Output
+//0
+//Expected
+//1
 
 import (
 	"fmt"

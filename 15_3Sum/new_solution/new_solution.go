@@ -2,37 +2,37 @@ package new_solution
 
 import "sort"
 
-func threeSum(x []int) [][]int {
-	sort.Ints(x)
+func threeSum(nums []int) [][]int {
+	sort.Ints(nums)
 	var results [][]int
 
-	for k := 0; k < len(x); k++ {
-		if x[k] > 0 {
+	for k := 0; k < len(nums); k++ {
+		if nums[k] > 0 {
 			break
 		}
 
-		if k > 0 && x[k] == x[k-1] {
+		if k > 0 && nums[k] == nums[k-1] {
 			continue
 		}
-		expect := 0 - x[k]
+		enumspect := 0 - nums[k]
 
 		i := k + 1
-		j := len(x) - 1
+		j := len(nums) - 1
 
-		for i < len(x) && j >= 0 && i < j {
-			sum := x[i] + x[j]
-			if sum == expect {
-				results = append(results, []int{x[i], x[k], x[j]})
-				for i < j && x[i] == x[i+1] {
+		for i < len(nums) && j >= 0 && i < j {
+			sum := nums[i] + nums[j]
+			if sum == enumspect {
+				results = append(results, []int{nums[i], nums[k], nums[j]})
+				for i < j && nums[i] == nums[i+1] {
 					i = i + 1
 				}
-				for i < j && x[j] == x[j-1] {
+				for i < j && nums[j] == nums[j-1] {
 					j = j - 1
 				}
 				i = i + 1
 				j = j - 1
 			} else {
-				if sum > expect {
+				if sum > enumspect {
 					j = j - 1
 				} else {
 					i = i + 1

@@ -43,17 +43,23 @@ func mergeTwoLists(L1 *ListNode, L2 *ListNode) *ListNode {
 		}
 	}
 
-	for head1 != nil {
+	// for head1 != nil {
+	// 	p1.Next = head1
+	// 	p1 = head1
+	// 	head1 = head1.Next
+	// }
+
+	// for head2 != nil {
+	// 	p1.Next = head2
+	// 	p1 = head2
+	// 	head2 = head2.Next
+	// }
+	if head1 != nil {
 		p1.Next = head1
-		p1 = head1
-		head1 = head1.Next
 	}
 
-	for head2 != nil {
+	if head2 != nil {
 		p1.Next = head2
-		p1 = head2
-		head2 = head2.Next
 	}
-
 	return dummy.Next
 }

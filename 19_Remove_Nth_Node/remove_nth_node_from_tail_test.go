@@ -2,6 +2,8 @@ package remove_nth_node
 
 import "testing"
 
+//[1,2] 2
+//[1] 1
 func Test_FindNth(t *testing.T) {
 	var head ListNode
 	head.Val = 1
@@ -24,4 +26,12 @@ func Test_FindNth(t *testing.T) {
 
 	traverse(removeNthFromEnd(&head, 2))
 	traverse(removeNthFromEnd(&head, 1))
+
+	// tmp := removeNthFromEnd(&head, 2)
+
+	// traverse(removeNthFromEnd(tmp, 1))
+
+	//traverse(removeNthFromEnd(&head, 2))
+	//traverse(removeNthFromEnd(&head, 1))
+
 }

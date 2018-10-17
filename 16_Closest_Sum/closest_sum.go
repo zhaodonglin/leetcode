@@ -1,6 +1,7 @@
 package closest_sum
 
 import "sort"
+import "fmt"
 
 func abs(val int) int {
 	if val < 0 {
@@ -11,7 +12,9 @@ func abs(val int) int {
 
 func threeSumClosest(nums []int, target int) int {
 	sort.Ints(nums)
-	mindiff := abs(nums[0] + nums[1] + nums[2] - target)
+
+	sumval := nums[0] + nums[1] + nums[2]
+	mindiff := abs(sumval - target)
 
 	for k := 0; k < len(nums); k++ {
 		i := k + 1
@@ -19,7 +22,7 @@ func threeSumClosest(nums []int, target int) int {
 
 		for i < len(nums) && j >= 0 && i < j {
 			sum := nums[i] + nums[j] + nums[k]
-
+			fmt.Println(sum, nums[i], nums[j], nums[k])
 			diff := abs(sum - target)
 			if diff == mindiff {
 				i = i + 1
@@ -28,12 +31,13 @@ func threeSumClosest(nums []int, target int) int {
 					j = j - 1
 				} else {
 					mindiff = diff
-					i = i + 1
+					sumval = sum
+					//i = i + 1
 				}
 			}
 
 		}
 	}
 
-	return mindiff
+	return sumval
 }
