@@ -13,7 +13,7 @@ var strStr = function(haystack, needle) {
     	begin = i;
     	index =0;
 
-    	for (;haystack[begin] === needle[index] && index< needle.length;begin++, index++){
+    	for (;index< needle.length&&haystack[begin] === needle[index];begin++, index++){
     	}
         console.log(begin, index)
     	if (index == needle.length){
