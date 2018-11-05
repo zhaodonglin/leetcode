@@ -30,6 +30,6 @@ var permute = function(nums) {
 	return all
 };
 
-console.log(permute([1,2]))
+console.log(permute([1,2,3]))
 
 permute([1,2,3])
