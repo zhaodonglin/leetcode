@@ -83,3 +83,5 @@ for (var i=0; i<t3.length;i++) {
 	console.log(t3[i], t3[i].length);
 }
 
+console.log(281076.71/5.03810)
+
