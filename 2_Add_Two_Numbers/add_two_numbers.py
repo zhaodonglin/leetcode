@@ -1,0 +1,26 @@
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    # @return a ListNode
+    def addTwoNumbers(self, l1, l2):
+        carry = 0
+        root = ListNode(0)
+        cur = root
+        while l1 or l2 or carry:
+            v1 = v2 = 0
+            if l1:
+                v1 = l1.val
+                l1 = l1.next
+            if l2:
+                v2 = l2.val
+                l2 = l2.next
+            carry,remainder = divmod(v1+v2+carry,10)
+            node = ListNode(remainder)
+            cur.next = node
+            cur = cur.next
+            
+        return root.next
+            
