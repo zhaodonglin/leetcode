@@ -1,0 +1,32 @@
+param([string]$CAMEndpoint, [string]$ServiceToken, [string]$ServerId, [string]$EnforceSSL="False", [string]$Proxy="False")
+
+function Logger($message) {
+    Write-Output $message
+    "$(Get-Date -format u) $message" | Out-File -FilePath "$targetFolder\install.log" -Append -Encoding 'utf8'
+}
+
+New-Item -path $env:ProgramData\ElasticBox\instance-id -value $ServerId -type file -force
+
+[Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$targetFolder = "$env:ProgramFiles\ElasticBox"
+$start_date=Get-Date -format HH:mm:ss
+while ($true) {
+    $web_client = New-Object System.Net.WebClient
+    try {
+        $web_client.DownloadFile("https://${CAMEndpoint}/agent/bootstrap.ps1", "$env:TEMP\bootstrap.ps1")
+        break
+    } catch [System.Net.WebException] {
+        $end_date=Get-Date -format HH:mm:ss
+        $time_diff = NEW-TIMESPAN  $start_date $end_date
+        if ($time_diff.Minutes -gt 3) {
+            Logger $_
+            Logger "Timeout for downloading file."
+            exit 1                  
+       }
+        Start-Sleep -s 10
+    }
+}
+
+Set-ExecutionPolicy Unrestricted -Force
+& $env:TEMP\bootstrap.ps1 -eb_host ${CAMEndpoint} -token ${ServiceToken} -enforce_ssl ${EnforceSSL} -proxy ${Proxy} -provider_type ctl
