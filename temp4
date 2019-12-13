@@ -1,0 +1,18 @@
+#ps1
+
+[Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+while ($true) {
+    $web_client = New-Object System.Net.WebClient
+    
+    try {
+        $web_client.DownloadFile("https://zhaodonglin.dev.external.elasticbox.com/agent/bootstrap.ps1", "$env:TEMP\bootstrap.ps1")
+        break
+    } catch [System.Net.WebException] {
+        Start-Sleep -s 10
+    }
+}
+
+Set-ExecutionPolicy Unrestricted -Force
+& $env:TEMP\bootstrap.ps1 -eb_host "zhaodonglin.dev.external.elasticbox.com" -token "fe630ded-76fd-4af2-9a70-72582e8c7202"  -provider_type "compute_instances" -enforce_ssl "no"  -network_id "c92c6fc8-fab0-4cc1-be1e-934bc4d6bef0" -self_register "yes"
+
